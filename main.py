@@ -33,7 +33,7 @@ async def test_response():
 
 @app.post("/order")
 async def create_order(amount=Body(...)):
-    data = { "amount": int(amount)*100, "currency": "INR"}
+    data = { "amount": amount*100, "currency": "INR"}
     payment = razorpay_client.order.create(data=data)
     order_id=payment["id"]
     return order_id
